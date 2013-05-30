@@ -1,0 +1,305 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DC20B7071757947A00508705 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC20B7061757947A00508705 /* Cocoa.framework */; };
+		DC20B7111757947A00508705 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC20B70F1757947A00508705 /* InfoPlist.strings */; };
+		DC20B7131757947A00508705 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC20B7121757947A00508705 /* main.m */; };
+		DC20B7171757947A00508705 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DC20B7151757947A00508705 /* Credits.rtf */; };
+		DC20B71A1757947A00508705 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC20B7191757947A00508705 /* AppDelegate.m */; };
+		DC20B71D1757947A00508705 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC20B71B1757947A00508705 /* MainMenu.xib */; };
+		DC20B725175799AE00508705 /* KolorView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC20B724175799AE00508705 /* KolorView.m */; };
+		DC20B72C1757A0E500508705 /* KolorTextInput.m in Sources */ = {isa = PBXBuildFile; fileRef = DC20B72B1757A0E500508705 /* KolorTextInput.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DC20B7021757947A00508705 /* Kolor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kolor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC20B7061757947A00508705 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		DC20B7091757947A00508705 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		DC20B70A1757947A00508705 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DC20B70B1757947A00508705 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DC20B70E1757947A00508705 /* Kolor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Kolor-Info.plist"; sourceTree = "<group>"; };
+		DC20B7101757947A00508705 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DC20B7121757947A00508705 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DC20B7141757947A00508705 /* Kolor-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kolor-Prefix.pch"; sourceTree = "<group>"; };
+		DC20B7161757947A00508705 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		DC20B7181757947A00508705 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		DC20B7191757947A00508705 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		DC20B71C1757947A00508705 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		DC20B723175799AE00508705 /* KolorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KolorView.h; sourceTree = "<group>"; };
+		DC20B724175799AE00508705 /* KolorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KolorView.m; sourceTree = "<group>"; };
+		DC20B72A1757A0E500508705 /* KolorTextInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KolorTextInput.h; sourceTree = "<group>"; };
+		DC20B72B1757A0E500508705 /* KolorTextInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KolorTextInput.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DC20B6FF1757947A00508705 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC20B7071757947A00508705 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DC20B6F71757947A00508705 = {
+			isa = PBXGroup;
+			children = (
+				DC20B70C1757947A00508705 /* Kolor */,
+				DC20B7051757947A00508705 /* Frameworks */,
+				DC20B7031757947A00508705 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DC20B7031757947A00508705 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC20B7021757947A00508705 /* Kolor.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DC20B7051757947A00508705 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC20B7061757947A00508705 /* Cocoa.framework */,
+				DC20B7081757947A00508705 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DC20B7081757947A00508705 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC20B7091757947A00508705 /* AppKit.framework */,
+				DC20B70A1757947A00508705 /* CoreData.framework */,
+				DC20B70B1757947A00508705 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		DC20B70C1757947A00508705 /* Kolor */ = {
+			isa = PBXGroup;
+			children = (
+				DC20B7181757947A00508705 /* AppDelegate.h */,
+				DC20B7191757947A00508705 /* AppDelegate.m */,
+				DC20B71B1757947A00508705 /* MainMenu.xib */,
+				DC20B70D1757947A00508705 /* Supporting Files */,
+				DC20B723175799AE00508705 /* KolorView.h */,
+				DC20B724175799AE00508705 /* KolorView.m */,
+				DC20B72A1757A0E500508705 /* KolorTextInput.h */,
+				DC20B72B1757A0E500508705 /* KolorTextInput.m */,
+			);
+			path = Kolor;
+			sourceTree = "<group>";
+		};
+		DC20B70D1757947A00508705 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DC20B70E1757947A00508705 /* Kolor-Info.plist */,
+				DC20B70F1757947A00508705 /* InfoPlist.strings */,
+				DC20B7121757947A00508705 /* main.m */,
+				DC20B7141757947A00508705 /* Kolor-Prefix.pch */,
+				DC20B7151757947A00508705 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DC20B7011757947A00508705 /* Kolor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC20B7201757947A00508705 /* Build configuration list for PBXNativeTarget "Kolor" */;
+			buildPhases = (
+				DC20B6FE1757947A00508705 /* Sources */,
+				DC20B6FF1757947A00508705 /* Frameworks */,
+				DC20B7001757947A00508705 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kolor;
+			productName = Kolor;
+			productReference = DC20B7021757947A00508705 /* Kolor.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DC20B6F91757947A00508705 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = DC20B6FC1757947A00508705 /* Build configuration list for PBXProject "Kolor" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DC20B6F71757947A00508705;
+			productRefGroup = DC20B7031757947A00508705 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DC20B7011757947A00508705 /* Kolor */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DC20B7001757947A00508705 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC20B7111757947A00508705 /* InfoPlist.strings in Resources */,
+				DC20B7171757947A00508705 /* Credits.rtf in Resources */,
+				DC20B71D1757947A00508705 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DC20B6FE1757947A00508705 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC20B7131757947A00508705 /* main.m in Sources */,
+				DC20B71A1757947A00508705 /* AppDelegate.m in Sources */,
+				DC20B725175799AE00508705 /* KolorView.m in Sources */,
+				DC20B72C1757A0E500508705 /* KolorTextInput.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DC20B70F1757947A00508705 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC20B7101757947A00508705 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DC20B7151757947A00508705 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC20B7161757947A00508705 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		DC20B71B1757947A00508705 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC20B71C1757947A00508705 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DC20B71E1757947A00508705 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		DC20B71F1757947A00508705 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		DC20B7211757947A00508705 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Kolor/Kolor-Prefix.pch";
+				INFOPLIST_FILE = "Kolor/Kolor-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DC20B7221757947A00508705 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Kolor/Kolor-Prefix.pch";
+				INFOPLIST_FILE = "Kolor/Kolor-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DC20B6FC1757947A00508705 /* Build configuration list for PBXProject "Kolor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC20B71E1757947A00508705 /* Debug */,
+				DC20B71F1757947A00508705 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC20B7201757947A00508705 /* Build configuration list for PBXNativeTarget "Kolor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC20B7211757947A00508705 /* Debug */,
+				DC20B7221757947A00508705 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DC20B6F91757947A00508705 /* Project object */;
+}
