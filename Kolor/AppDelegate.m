@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#define KolorTextInputErrorBkgColor         [NSColor colorWithCalibratedRed:0.909804 green:0.027451 blue:0.396078 alpha:1.0]
+
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -15,15 +17,15 @@
 @synthesize nsField;
 @synthesize uiField;
 @synthesize hexaInputCell;
+@synthesize colorWell;
 
-- (void)dealloc
-{
+
+- (void)dealloc {
     [super dealloc];
 }
 	
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    // Insert code here to initialize your application
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    [colorWell setColor:[NSColor darkGrayColor]];
 }
 
 - (void)controlTextDidChange:(NSNotification *)notification {
@@ -72,8 +74,10 @@
                     blueDec = (float)blueByte/0xff;
                 }
                 
-                [nsField setStringValue:[NSString stringWithFormat:@"[NSColor colorWithCalibratedRed:%f green:%f blue:%f alpha:1.0]",redDec,greenDec,blueDec]];
-                [uiField setStringValue:[NSString stringWithFormat:@"[UIColor colorWithRed:%f green:%f blue:%f alpha:1.0]",redDec,greenDec,blueDec]];
+                [nsField setStringValue:[NSString stringWithFormat:@"[NSColor colorWithCalibratedRed:%.03f green:%.03f blue:%.03f alpha:1.0]",redDec,greenDec,blueDec]];
+                [uiField setStringValue:[NSString stringWithFormat:@"[UIColor colorWithRed:%.03f green:%.03f blue:%.03f alpha:1.0]",redDec,greenDec,blueDec]];
+                [colorWell setColor:[NSColor colorWithCalibratedRed:redDec green:greenDec blue:blueDec alpha:1.0]];
+                
             }
             else {
                 [self blackout];
@@ -88,6 +92,7 @@
     }
     else {
         [hexaInputCell setNormal];
+        [colorWell setColor:[NSColor darkGrayColor]];
     }
 }
 
@@ -95,6 +100,7 @@
     [hexaInputCell setRed];
     [nsField setStringValue:@""];
     [uiField setStringValue:@""];
+    [colorWell setColor:KolorTextInputErrorBkgColor];
 }
 
 @end
