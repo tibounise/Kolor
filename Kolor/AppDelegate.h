@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import "KolorTextInput.h"
-#import "KolorPreview.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
@@ -17,7 +16,7 @@
 @property (assign) IBOutlet NSTextField *nsField;
 @property (assign) IBOutlet NSTextField *uiField;
 @property (assign) IBOutlet KolorTextInput *hexaInputCell;
-@property (assign) IBOutlet KolorPreview *colorView;
+@property (assign) IBOutlet NSColorWell *colorWell;
 
 -(void)blackout;
 
