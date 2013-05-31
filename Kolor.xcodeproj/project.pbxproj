@@ -15,6 +15,7 @@
 		DC20B71D1757947A00508705 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC20B71B1757947A00508705 /* MainMenu.xib */; };
 		DC20B725175799AE00508705 /* KolorView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC20B724175799AE00508705 /* KolorView.m */; };
 		DC20B72C1757A0E500508705 /* KolorTextInput.m in Sources */ = {isa = PBXBuildFile; fileRef = DC20B72B1757A0E500508705 /* KolorTextInput.m */; };
+		DCCA3E9C1758A0EC001E2AE1 /* KolorPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCA3E9B1758A0EC001E2AE1 /* KolorPreview.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		DC20B724175799AE00508705 /* KolorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KolorView.m; sourceTree = "<group>"; };
 		DC20B72A1757A0E500508705 /* KolorTextInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KolorTextInput.h; sourceTree = "<group>"; };
 		DC20B72B1757A0E500508705 /* KolorTextInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KolorTextInput.m; sourceTree = "<group>"; };
+		DCCA3E9A1758A0EC001E2AE1 /* KolorPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KolorPreview.h; sourceTree = "<group>"; };
+		DCCA3E9B1758A0EC001E2AE1 /* KolorPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KolorPreview.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,8 @@
 				DC20B70D1757947A00508705 /* Supporting Files */,
 				DC20B723175799AE00508705 /* KolorView.h */,
 				DC20B724175799AE00508705 /* KolorView.m */,
+				DCCA3E9A1758A0EC001E2AE1 /* KolorPreview.h */,
+				DCCA3E9B1758A0EC001E2AE1 /* KolorPreview.m */,
 				DC20B72A1757A0E500508705 /* KolorTextInput.h */,
 				DC20B72B1757A0E500508705 /* KolorTextInput.m */,
 			);
@@ -179,6 +184,7 @@
 				DC20B71A1757947A00508705 /* AppDelegate.m in Sources */,
 				DC20B725175799AE00508705 /* KolorView.m in Sources */,
 				DC20B72C1757A0E500508705 /* KolorTextInput.m in Sources */,
+				DCCA3E9C1758A0EC001E2AE1 /* KolorPreview.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +304,7 @@
 				DC20B7221757947A00508705 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -15,6 +15,7 @@
 @synthesize nsField;
 @synthesize uiField;
 @synthesize hexaInputCell;
+@synthesize colorView;
 
 - (void)dealloc
 {
@@ -74,6 +75,7 @@
                 
                 [nsField setStringValue:[NSString stringWithFormat:@"[NSColor colorWithCalibratedRed:%f green:%f blue:%f alpha:1.0]",redDec,greenDec,blueDec]];
                 [uiField setStringValue:[NSString stringWithFormat:@"[UIColor colorWithRed:%f green:%f blue:%f alpha:1.0]",redDec,greenDec,blueDec]];
+                [colorView setBkg:[NSColor darkGrayColor]];
             }
             else {
                 [self blackout];
@@ -95,6 +97,7 @@
     [hexaInputCell setRed];
     [nsField setStringValue:@""];
     [uiField setStringValue:@""];
+    [colorView setBkg:[NSColor blueColor]];
 }
 
 @end
