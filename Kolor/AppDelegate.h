@@ -24,5 +24,6 @@
 - (IBAction)uiCopyAction:(id)sender;
 
 -(void)blackout;
+-(void)semiblackout;
 
 @end

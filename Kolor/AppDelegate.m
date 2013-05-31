@@ -101,8 +101,7 @@ NSString *uiString;
     else {
         [hexaInputCell setNormal];
         [colorWell setColor:[NSColor darkGrayColor]];
-        [nsCopyButton setHidden:YES];
-        [uiCopyButton setHidden:YES];
+        [self semiblackout];
     }
 }
 
@@ -122,9 +121,13 @@ NSString *uiString;
 
 -(void)blackout {
     [hexaInputCell setRed];
+    [colorWell setColor:KolorTextInputErrorBkgColor];
+    [self semiblackout];
+}
+
+-(void)semiblackout {
     [nsField setStringValue:@""];
     [uiField setStringValue:@""];
-    [colorWell setColor:KolorTextInputErrorBkgColor];
     [nsCopyButton setHidden:YES];
     [uiCopyButton setHidden:YES];
 }
