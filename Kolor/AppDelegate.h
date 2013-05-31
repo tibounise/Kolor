@@ -17,6 +17,11 @@
 @property (assign) IBOutlet NSTextField *uiField;
 @property (assign) IBOutlet KolorTextInput *hexaInputCell;
 @property (assign) IBOutlet NSColorWell *colorWell;
+@property (assign) IBOutlet NSButton *nsCopyButton;
+@property (assign) IBOutlet NSButton *uiCopyButton;
+
+- (IBAction)nsCopyAction:(id)sender;
+- (IBAction)uiCopyAction:(id)sender;
 
 -(void)blackout;
 

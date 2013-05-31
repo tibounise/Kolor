@@ -18,6 +18,8 @@
 @synthesize uiField;
 @synthesize hexaInputCell;
 @synthesize colorWell;
+@synthesize nsCopyButton;
+@synthesize uiCopyButton;
 
 
 - (void)dealloc {
@@ -77,7 +79,8 @@
                 [nsField setStringValue:[NSString stringWithFormat:@"[NSColor colorWithCalibratedRed:%.03f green:%.03f blue:%.03f alpha:1.0]",redDec,greenDec,blueDec]];
                 [uiField setStringValue:[NSString stringWithFormat:@"[UIColor colorWithRed:%.03f green:%.03f blue:%.03f alpha:1.0]",redDec,greenDec,blueDec]];
                 [colorWell setColor:[NSColor colorWithCalibratedRed:redDec green:greenDec blue:blueDec alpha:1.0]];
-                
+                [nsCopyButton setHidden:NO];
+                [uiCopyButton setHidden:NO];
             }
             else {
                 [self blackout];
@@ -93,7 +96,15 @@
     else {
         [hexaInputCell setNormal];
         [colorWell setColor:[NSColor darkGrayColor]];
+        [nsCopyButton setHidden:YES];
+        [uiCopyButton setHidden:YES];
     }
+}
+
+- (IBAction)nsCopyAction:(id)sender {
+}
+
+- (IBAction)uiCopyAction:(id)sender {
 }
 
 -(void)blackout {
@@ -101,6 +112,8 @@
     [nsField setStringValue:@""];
     [uiField setStringValue:@""];
     [colorWell setColor:KolorTextInputErrorBkgColor];
+    [nsCopyButton setHidden:YES];
+    [uiCopyButton setHidden:YES];
 }
 
 @end
