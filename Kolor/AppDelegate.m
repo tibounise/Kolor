@@ -72,7 +72,7 @@
                     blueDec = (float)blueByte/0xff;
                 }
                 
-                [nsField setStringValue:[NSString stringWithFormat:@"[NSColor colorWithDeviceRed:%f green:%f blue:%f alpha:1.0]",redDec,greenDec,blueDec]];
+                [nsField setStringValue:[NSString stringWithFormat:@"[NSColor colorWithCalibratedRed:%f green:%f blue:%f alpha:1.0]",redDec,greenDec,blueDec]];
                 [uiField setStringValue:[NSString stringWithFormat:@"[UIColor colorWithRed:%f green:%f blue:%f alpha:1.0]",redDec,greenDec,blueDec]];
             }
             else {

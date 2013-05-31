@@ -10,7 +10,8 @@
 
 #define KolorTextInputColor                 [NSColor whiteColor]
 #define KolorTextInputBkgColor              [NSColor darkGrayColor]
-#define KolorTextInputSelectColor           [NSColor cyanColor]
+#define KolorTextInputSelectColor           [NSColor colorWithCalibratedRed:0.631373 green:0.854902 blue:0.831373 alpha:1.0]
+#define KolorTextInputErrorBkgColor         [NSColor colorWithCalibratedRed:0.909804 green:0.027451 blue:0.396078 alpha:1.0]
 
 @implementation KolorTextInput
 
@@ -44,8 +45,8 @@
     
     NSBezierPath *backgroundPath = [NSBezierPath bezierPathWithRect:backgroundRect];
     
-    if (bkgColor != nil) {
-        [bkgColor set];
+    if (bkgColor == 1) {
+        [KolorTextInputErrorBkgColor set];
     } else {
         [KolorTextInputBkgColor set];
     }
@@ -56,16 +57,12 @@
     [self drawInteriorWithFrame:textRect inView:controlView];
 }
 
--(void)setBkgColor:(NSColor*)color {
-    bkgColor = color;
-}
-
 -(void)setRed {
-    bkgColor = [NSColor redColor];
+    bkgColor = 1;
 }
 
 -(void)setNormal {
-    bkgColor = nil;
+    bkgColor = 0;
 }
 
 @end

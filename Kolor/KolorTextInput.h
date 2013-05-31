@@ -9,12 +9,11 @@
 #import <AppKit/AppKit.h>
 
 @interface KolorTextInput : NSTextFieldCell {
-    NSColor *bkgColor;
+    int bkgColor;
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder;
 -(NSText*)setUpFieldEditorAttributes:(NSText *)textObj;
--(void)setBkgColor:(NSColor*)color;
 -(void)setRed;
 -(void)setNormal;
 
