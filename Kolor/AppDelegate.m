@@ -54,13 +54,13 @@
                 [scanner scanHexInt:&colorCode];
                 
                 if (textLength == 3) {
-                    redByte		= (unsigned char) (colorCode >> 8);
-                    greenByte	= (unsigned char) (colorCode >> 4);
-                    blueByte	= (unsigned char) (colorCode);
+                    redByte		= (colorCode & 0xF00) >> 8;
+                    greenByte	= (colorCode & 0xF0) >> 4;
+                    blueByte	= colorCode & 0xF;
                     
-                    redDec = (float)redByte * 17/0xff;
-                    greenDec = (float)greenByte * 17/0xff;
-                    blueDec = (float)blueByte * 17/0xff;
+                    redDec = (float)redByte / 0xF;
+                    greenDec = (float)greenByte / 0xF;
+                    blueDec = (float)blueByte / 0xF;
                 }
                 else if (textLength == 6) {
                     redByte		= (unsigned char) (colorCode >> 16);

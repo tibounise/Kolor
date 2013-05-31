@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Kolor/AppDelegate.m"
-         timestampString = "391637955.561448"
+         timestampString = "391682486.276375"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "87"
-         endingLineNumber = "87"
+         startingLineNumber = "89"
+         endingLineNumber = "89"
          landmarkName = "-controlTextDidChange:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -23,11 +23,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Kolor/AppDelegate.m"
-         timestampString = "391637955.561448"
+         timestampString = "391682486.276375"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "90"
-         endingLineNumber = "90"
+         startingLineNumber = "92"
+         endingLineNumber = "92"
          landmarkName = "-controlTextDidChange:"
          landmarkType = "5">
       </FileBreakpoint>
