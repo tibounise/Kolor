@@ -21,6 +21,8 @@
 @synthesize nsCopyButton;
 @synthesize uiCopyButton;
 
+NSString *nsString;
+NSString *uiString;
 
 - (void)dealloc {
     [super dealloc];
@@ -76,8 +78,11 @@
                     blueDec = (float)blueByte/0xff;
                 }
                 
-                [nsField setStringValue:[NSString stringWithFormat:@"[NSColor colorWithCalibratedRed:%.03f green:%.03f blue:%.03f alpha:1.0]",redDec,greenDec,blueDec]];
-                [uiField setStringValue:[NSString stringWithFormat:@"[UIColor colorWithRed:%.03f green:%.03f blue:%.03f alpha:1.0]",redDec,greenDec,blueDec]];
+                nsString = [NSString stringWithFormat:@"[NSColor colorWithCalibratedRed:%.03f green:%.03f blue:%.03f alpha:1.0]",redDec,greenDec,blueDec];
+                uiString = [NSString stringWithFormat:@"[UIColor colorWithRed:%.03f green:%.03f blue:%.03f alpha:1.0]",redDec,greenDec,blueDec];
+                
+                [nsField setStringValue:nsString];
+                [uiField setStringValue:uiString];
                 [colorWell setColor:[NSColor colorWithCalibratedRed:redDec green:greenDec blue:blueDec alpha:1.0]];
                 [nsCopyButton setHidden:NO];
                 [uiCopyButton setHidden:NO];
@@ -102,9 +107,17 @@
 }
 
 - (IBAction)nsCopyAction:(id)sender {
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+    NSInteger changeCount = [pasteboard clearContents];
+    [pasteboard declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:self];
+    [pasteboard setString:nsString forType:NSStringPboardType];
 }
 
 - (IBAction)uiCopyAction:(id)sender {
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+    NSInteger changeCount = [pasteboard clearContents];
+    [pasteboard declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:self];
+    [pasteboard setString:uiString forType:NSStringPboardType];
 }
 
 -(void)blackout {
