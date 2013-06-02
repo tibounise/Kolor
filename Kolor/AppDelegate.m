@@ -106,17 +106,18 @@ NSString *uiString;
 }
 
 - (IBAction)nsCopyAction:(id)sender {
-    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
-    NSInteger changeCount = [pasteboard clearContents];
-    [pasteboard declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:self];
-    [pasteboard setString:nsString forType:NSStringPboardType];
+    [self paste:nsString];
 }
 
 - (IBAction)uiCopyAction:(id)sender {
+    [self paste:uiString];
+}
+
+-(void)paste:(NSString*)string {
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
-    NSInteger changeCount = [pasteboard clearContents];
+    [pasteboard clearContents];
     [pasteboard declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:self];
-    [pasteboard setString:uiString forType:NSStringPboardType];
+    [pasteboard setString:string forType:NSStringPboardType];
 }
 
 -(void)blackout {

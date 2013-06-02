@@ -25,5 +25,6 @@
 
 -(void)blackout;
 -(void)semiblackout;
+-(void)paste:(NSString*)string;
 
 @end
