@@ -15,6 +15,7 @@
 		DC20B71D1757947A00508705 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC20B71B1757947A00508705 /* MainMenu.xib */; };
 		DC20B725175799AE00508705 /* KolorView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC20B724175799AE00508705 /* KolorView.m */; };
 		DC20B72C1757A0E500508705 /* KolorTextInput.m in Sources */ = {isa = PBXBuildFile; fileRef = DC20B72B1757A0E500508705 /* KolorTextInput.m */; };
+		DCDA0AE0175B431F003FF466 /* KolorParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDA0ADF175B431F003FF466 /* KolorParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		DC20B724175799AE00508705 /* KolorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KolorView.m; sourceTree = "<group>"; };
 		DC20B72A1757A0E500508705 /* KolorTextInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KolorTextInput.h; sourceTree = "<group>"; };
 		DC20B72B1757A0E500508705 /* KolorTextInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KolorTextInput.m; sourceTree = "<group>"; };
+		DCDA0ADE175B431F003FF466 /* KolorParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KolorParser.h; sourceTree = "<group>"; };
+		DCDA0ADF175B431F003FF466 /* KolorParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KolorParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +99,8 @@
 				DC20B724175799AE00508705 /* KolorView.m */,
 				DC20B72A1757A0E500508705 /* KolorTextInput.h */,
 				DC20B72B1757A0E500508705 /* KolorTextInput.m */,
+				DCDA0ADE175B431F003FF466 /* KolorParser.h */,
+				DCDA0ADF175B431F003FF466 /* KolorParser.m */,
 			);
 			path = Kolor;
 			sourceTree = "<group>";
@@ -179,6 +184,7 @@
 				DC20B71A1757947A00508705 /* AppDelegate.m in Sources */,
 				DC20B725175799AE00508705 /* KolorView.m in Sources */,
 				DC20B72C1757A0E500508705 /* KolorTextInput.m in Sources */,
+				DCDA0AE0175B431F003FF466 /* KolorParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

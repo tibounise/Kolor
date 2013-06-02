@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "KolorParser.h"
 
 #define KolorTextInputErrorBkgColor         [NSColor colorWithCalibratedRed:0.909804 green:0.027451 blue:0.396078 alpha:1.0]
 
@@ -49,14 +50,12 @@ NSPasteboard *pasteboard;
     
         // Second length pre-check
         if (textLength == 3 || textLength == 6) {
-            NSCharacterSet *NonHexaChars = [[NSCharacterSet characterSetWithCharactersInString:@"ABCDEFabcdef0123456789"] invertedSet];
-            NSRange badChars = [hexaText rangeOfCharacterFromSet:NonHexaChars];
             unsigned int colorCode = 0;
             unsigned char redByte, greenByte, blueByte;
             float redDec, greenDec, blueDec;
             
             // Checking for non-hex chars
-            if (badChars.location == NSNotFound) {
+            if ([KolorParser isParsable:hexaText]) {
                 [hexaInputCell setNormal];
                 NSScanner *scanner = [NSScanner scannerWithString:hexaText];
                 [scanner scanHexInt:&colorCode];
