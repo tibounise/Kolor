@@ -23,6 +23,7 @@
 
 NSString *nsString;
 NSString *uiString;
+NSPasteboard *pasteboard;
 
 - (void)dealloc {
     [super dealloc];
@@ -30,6 +31,7 @@ NSString *uiString;
 	
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [colorWell setColor:[NSColor darkGrayColor]];
+    pasteboard = [NSPasteboard generalPasteboard];
 }
 
 - (void)controlTextDidChange:(NSNotification *)notification {
@@ -114,7 +116,6 @@ NSString *uiString;
 }
 
 -(void)paste:(NSString*)string {
-    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     [pasteboard clearContents];
     [pasteboard declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:self];
     [pasteboard setString:string forType:NSStringPboardType];
