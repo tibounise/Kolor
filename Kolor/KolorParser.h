@@ -15,9 +15,9 @@
 
 -(id)init;
 -(BOOL)isParsable:(NSString*)colorString;
-+(NSString*)getColorIdentifier:(NSMutableDictionary*)color;
-+(NSString*)formatUIColor:(NSMutableDictionary*)color;
+-(NSMutableDictionary*)parseColor:(NSString*)colorString;
 +(NSString*)formatNSColor:(NSMutableDictionary*)color;
-+(NSMutableDictionary*)parseColor:(NSString*)colorString;
++(NSString*)formatUIColor:(NSMutableDictionary*)color;
+-(NSString*)getSmallColorIdentifierWithRed:(int)red green:(int)green blue:(int)blue;
 
 @end

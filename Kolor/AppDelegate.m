@@ -56,7 +56,7 @@ KolorParser *kparser;
             if ([kparser isParsable:hexaText]) {
                 [hexaInputCell setNormal];
                 
-                NSMutableDictionary *color = [KolorParser parseColor:hexaText];
+                NSMutableDictionary *color = [kparser parseColor:hexaText];
                 
                 nsString = [KolorParser formatNSColor:color];
                 uiString = [KolorParser formatUIColor:color];
