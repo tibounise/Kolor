@@ -25,6 +25,7 @@
 NSString *nsString;
 NSString *uiString;
 NSPasteboard *pasteboard;
+KolorParser *kparser;
 
 - (void)dealloc {
     [super dealloc];
@@ -33,35 +34,32 @@ NSPasteboard *pasteboard;
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [colorWell setColor:[NSColor darkGrayColor]];
     pasteboard = [NSPasteboard generalPasteboard];
+    kparser = [[KolorParser alloc] init];
 }
 
 - (void)controlTextDidChange:(NSNotification *)notification {
     // Gathering the text as a NSString
     NSString *hexaText = [hexaInput stringValue];
-    int textLength = [hexaText length];
+    int textLength = (int)[hexaText length];
     
     // Length pre-check
     if (textLength > 1) {
         // If there is a "#", remove it
         if ([[hexaText substringToIndex:1] isEqualToString:@"#"]) {
             hexaText = [hexaText substringFromIndex:1];
-            textLength = [hexaText length];
+            textLength = textLength - 1;
         }
     
         // Second length pre-check
         if (textLength == 3 || textLength == 6) {
             // Checking for non-hex chars
-            if ([KolorParser isParsable:hexaText]) {
+            if ([kparser isParsable:hexaText]) {
                 [hexaInputCell setNormal];
                 
-                NSArray *color = [KolorParser parseColor:hexaText];
-                
-                NSLog(@"PING1");
+                NSMutableDictionary *color = [KolorParser parseColor:hexaText];
                 
                 nsString = [KolorParser formatNSColor:color];
                 uiString = [KolorParser formatUIColor:color];
-
-                NSLog(@"PING2");
                 
                 [nsField setStringValue:nsString];
                 [uiField setStringValue:uiString];

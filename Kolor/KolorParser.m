@@ -10,14 +10,19 @@
 
 @implementation KolorParser
 
-+(BOOL)isParsable:(NSString*)colorString {
-    NSCharacterSet *NonHexaChars = [[NSCharacterSet characterSetWithCharactersInString:@"ABCDEFabcdef0123456789"] invertedSet];
-    NSRange badChars = [colorString rangeOfCharacterFromSet:NonHexaChars];
+-(id)init {
+    nonHexaChars = [[NSCharacterSet characterSetWithCharactersInString:@"ABCDEFabcdef0123456789"] invertedSet];
+    smallColorIdentifiers = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SmallColorIdentifiers" ofType:@"plist"]];
+    return self;
+}
+
+-(BOOL)isParsable:(NSString*)colorString {
+    NSRange badChars = [colorString rangeOfCharacterFromSet:nonHexaChars];
     return badChars.location == NSNotFound;
 }
 
-+(NSMutableArray*)parseColor:(NSString*)colorString {
-    NSMutableArray *output = [NSMutableArray array];
++(NSMutableDictionary*)parseColor:(NSString*)colorString {
+    NSMutableDictionary *output = [NSMutableDictionary dictionary];
     NSScanner *scanner = [NSScanner scannerWithString:colorString];
     int textLength = (int)[colorString length];
     unsigned int colorCode = 0,redByte,greenByte,blueByte;
@@ -31,21 +36,23 @@
         [output setValue:[NSNumber numberWithFloat:redByte / 0xF] forKey:@"red"];
         [output setValue:[NSNumber numberWithFloat:greenByte / 0xF] forKey:@"green"];
         [output setValue:[NSNumber numberWithFloat:blueByte / 0xF] forKey:@"blue"];
+        
+        
     }
     else if (textLength == 6) {
         redByte		= (unsigned char) (colorCode >> 16);
         greenByte	= (unsigned char) (colorCode >> 8);
         blueByte	= (unsigned char) (colorCode);
         
-        [output setValue:[NSNumber numberWithFloat:redByte / 0xFF] forKey:@"red"];
-        [output setValue:[NSNumber numberWithFloat:greenByte / 0xFF] forKey:@"green"];
-        [output setValue:[NSNumber numberWithFloat:blueByte / 0xFF] forKey:@"blue"];
+        [output setValue:[NSNumber numberWithFloat:(redByte / 0xFF)] forKey:@"red"];
+        [output setValue:[NSNumber numberWithFloat:(greenByte / 0xFF)] forKey:@"green"];
+        [output setValue:[NSNumber numberWithFloat:(blueByte / 0xFF)] forKey:@"blue"];
     }
     
     return output;
 }
 
-+(NSString*)formatNSColor:(NSMutableArray*)color {
++(NSString*)formatNSColor:(NSMutableDictionary*)color {
     NSString *colorIdentifier = [self getColorIdentifier:color];
     
     if (colorIdentifier != nil) {
@@ -59,11 +66,11 @@
     }
 }
 
-+(NSString*)formatUIColor:(NSArray*)color {
++(NSString*)formatUIColor:(NSMutableDictionary*)color {
     NSString *colorIdentifier = [self getColorIdentifier:color];
     
     if (colorIdentifier != nil) {
-        return [NSString stringWithFormat:@"[NSColor %@]",colorIdentifier];
+        return [NSString stringWithFormat:@"[UIColor %@]",colorIdentifier];
     }
     else {
         return [NSString stringWithFormat:@"[UIColor colorWithRed:%.03f green:%.03f blue:%.03f alpha:1.0]",
@@ -73,39 +80,17 @@
     }
 }
 
-+(NSString*)getColorIdentifier:(NSMutableArray*)color {
-    /* Needs to be rewritten, to use a JSON file */
+-(NSString*)getSmallColorIdentifierWithRed:(int)red green:(int)green blue:(int)blue {
+    NSEnumerator *smallColorEnumerator = [smallColorIdentifiers objectEnumerator];
+    id color;
     
-    float red,green,blue;
+    while ((color = [smallColorEnumerator nextObject])) {
+        if ([[color valueForKey:@"red"] isEqualToNumber:[NSNumber numberWithInt:red]]) {
+            return [color key];
+        }
+    }
     
-    red = [[color valueForKey:@"red"] floatValue];
-    green = [[color valueForKey:@"green"] floatValue];
-    blue = [[color valueForKey:@"blue"] floatValue];
-    
-    if (red == 0 && green == 0 && blue == 0) {
-        return @"blackColor";
-    }
-    else if (red == 1 && green == 1 && blue == 1) {
-        return @"whiteColor";
-    }
-    else if (red == 0 && green == 0 && blue == 1) {
-        return @"blueColor";
-    }
-    else if (red == 1 && green == 0 && blue == 0) {
-        return @"redColor";
-    }
-    else if (red == 0 && green == 1 && blue == 0) {
-        return @"greenColor";
-    }
-    else if (red == 0.5 && green == 0 && blue == 0.5) {
-        return @"purpleColor";
-    }
-    else if (red == 0.6 && green == 0.4 && blue == 0.2) {
-        return @"brownColor";
-    }
-    else {
-        return nil;
-    }
+    return nil;
 }
 
 @end

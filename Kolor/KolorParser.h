@@ -8,12 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface KolorParser : NSObject
+@interface KolorParser : NSObject {
+    NSCharacterSet *nonHexaChars;
+    NSDictionary *smallColorIdentifiers;
+}
 
-+(BOOL)isParsable:(NSString*)colorString;
-+(NSMutableArray*)parseColor:(NSString*)colorString;
-+(NSString*)formatNSColor:(NSMutableArray*)color;
-+(NSString*)formatUIColor:(NSArray*)color;
-+(NSString*)getColorIdentifier:(NSMutableArray*)color;
+-(id)init;
+-(BOOL)isParsable:(NSString*)colorString;
++(NSString*)getColorIdentifier:(NSMutableDictionary*)color;
++(NSString*)formatUIColor:(NSMutableDictionary*)color;
++(NSString*)formatNSColor:(NSMutableDictionary*)color;
++(NSMutableDictionary*)parseColor:(NSString*)colorString;
 
 @end
