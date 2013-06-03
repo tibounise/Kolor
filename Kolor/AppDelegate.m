@@ -50,41 +50,22 @@ NSPasteboard *pasteboard;
     
         // Second length pre-check
         if (textLength == 3 || textLength == 6) {
-            unsigned int colorCode = 0;
-            unsigned char redByte, greenByte, blueByte;
-            float redDec, greenDec, blueDec;
-            
             // Checking for non-hex chars
             if ([KolorParser isParsable:hexaText]) {
                 [hexaInputCell setNormal];
-                NSScanner *scanner = [NSScanner scannerWithString:hexaText];
-                [scanner scanHexInt:&colorCode];
                 
-                if (textLength == 3) {
-                    redByte		= (colorCode & 0xF00) >> 8;
-                    greenByte	= (colorCode & 0xF0) >> 4;
-                    blueByte	= colorCode & 0xF;
-                    
-                    redDec = (float)redByte / 0xF;
-                    greenDec = (float)greenByte / 0xF;
-                    blueDec = (float)blueByte / 0xF;
-                }
-                else if (textLength == 6) {
-                    redByte		= (unsigned char) (colorCode >> 16);
-                    greenByte	= (unsigned char) (colorCode >> 8);
-                    blueByte	= (unsigned char) (colorCode);
-                    
-                    redDec = (float)redByte/0xff;
-                    greenDec = (float)greenByte/0xff;
-                    blueDec = (float)blueByte/0xff;
-                }
+                NSArray *color = [KolorParser parseColor:hexaText];
                 
-                nsString = [NSString stringWithFormat:@"[NSColor colorWithCalibratedRed:%.03f green:%.03f blue:%.03f alpha:1.0]",redDec,greenDec,blueDec];
-                uiString = [NSString stringWithFormat:@"[UIColor colorWithRed:%.03f green:%.03f blue:%.03f alpha:1.0]",redDec,greenDec,blueDec];
+                NSLog(@"PING1");
+                
+                nsString = [KolorParser formatNSColor:color];
+                uiString = [KolorParser formatUIColor:color];
+
+                NSLog(@"PING2");
                 
                 [nsField setStringValue:nsString];
                 [uiField setStringValue:uiString];
-                [colorWell setColor:[NSColor colorWithCalibratedRed:redDec green:greenDec blue:blueDec alpha:1.0]];
+                [colorWell setColor:[NSColor colorWithCalibratedRed:[[color valueForKey:@"red"] floatValue] green:[[color valueForKey:@"green"] floatValue] blue:[[color valueForKey:@"blue"] floatValue] alpha:1.0]];
                 [nsCopyButton setHidden:NO];
                 [uiCopyButton setHidden:NO];
             }

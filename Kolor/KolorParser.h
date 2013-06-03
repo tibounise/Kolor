@@ -11,5 +11,9 @@
 @interface KolorParser : NSObject
 
 +(BOOL)isParsable:(NSString*)colorString;
++(NSMutableArray*)parseColor:(NSString*)colorString;
++(NSString*)formatNSColor:(NSMutableArray*)color;
++(NSString*)formatUIColor:(NSArray*)color;
++(NSString*)getColorIdentifier:(NSMutableArray*)color;
 
 @end
