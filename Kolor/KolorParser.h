@@ -11,6 +11,7 @@
 @interface KolorParser : NSObject {
     NSCharacterSet *nonHexaChars;
     NSDictionary *smallColorIdentifiers;
+    NSDictionary *bigColorIdentifiers;
 }
 
 -(id)init;
@@ -19,5 +20,6 @@
 +(NSString*)formatNSColor:(NSMutableDictionary*)color;
 +(NSString*)formatUIColor:(NSMutableDictionary*)color;
 -(NSString*)getSmallColorIdentifierWithRed:(int)red green:(int)green blue:(int)blue;
+-(NSString*)getBigColorIdentifierWithRed:(int)red green:(int)green blue:(int)blue;
 
 @end

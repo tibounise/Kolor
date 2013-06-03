@@ -19,6 +19,8 @@
         
         smallColorIdentifiers = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SmallColorIdentifiers" ofType:@"plist"]];
         [smallColorIdentifiers retain];
+        bigColorIdentifiers = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BigColorIdentifiers" ofType:@"plist"]];
+        [bigColorIdentifiers retain];
     }
     
     return self;
@@ -51,6 +53,8 @@
         redByte		= (colorCode & 0xFF0000) >> 16;
         greenByte	= (colorCode & 0xFF00) >> 8;
         blueByte	= colorCode & 0xFF;
+        
+        [output setValue:[self getBigColorIdentifierWithRed:redByte green:greenByte blue:blueByte] forKey:@"identifier"];
         
         [output setValue:[NSNumber numberWithFloat:redByte / 0xFF] forKey:@"red"];
         [output setValue:[NSNumber numberWithFloat:greenByte / 0xFF] forKey:@"green"];
@@ -86,6 +90,19 @@
 
 -(NSString*)getSmallColorIdentifierWithRed:(int)red green:(int)green blue:(int)blue {
     NSEnumerator *colorEnumerator = [smallColorIdentifiers objectEnumerator];
+    id color;
+    
+    while ((color = [colorEnumerator nextObject])) {
+        if ([[color valueForKey:@"red"] isEqualToNumber:[NSNumber numberWithInt:red]] && [[color valueForKey:@"blue"] isEqualToNumber:[NSNumber numberWithInt:blue]] && [[color valueForKey:@"green"] isEqualToNumber:[NSNumber numberWithInt:green]]) {
+            return [color valueForKey:@"name"];
+        }
+    }
+    
+    return nil;
+}
+
+-(NSString*)getBigColorIdentifierWithRed:(int)red green:(int)green blue:(int)blue {
+    NSEnumerator *colorEnumerator = [bigColorIdentifiers objectEnumerator];
     id color;
     
     while ((color = [colorEnumerator nextObject])) {
