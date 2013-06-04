@@ -26,6 +26,21 @@
     return self;
 }
 
++(NSString*)removeHash:(NSString*)input {
+    if ([input length] > 1 && [[input substringToIndex:1] isEqualToString:@"#"]) {
+        return [input substringFromIndex:1];
+    }
+    else {
+        return nil;
+    }
+}
+
++(BOOL)checkLength:(NSString*)input {
+    int inputLength = (int)[input length];
+    NSLog(inputLength);
+    return inputLength == 3 || inputLength == 6;
+}
+
 -(BOOL)isParsable:(NSString*)colorString {
     NSRange badChars = [colorString rangeOfCharacterFromSet:nonHexaChars];
     return badChars.location == NSNotFound;
@@ -98,6 +113,7 @@
         }
     }
     
+    [colorEnumerator release];
     return nil;
 }
 
@@ -111,6 +127,7 @@
         }
     }
     
+    [colorEnumerator release];
     return nil;
 }
 

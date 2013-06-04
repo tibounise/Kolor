@@ -16,9 +16,11 @@
 
 -(id)init;
 -(BOOL)isParsable:(NSString*)colorString;
++(BOOL)checkLength:(NSString*)input;
 -(NSMutableDictionary*)parseColor:(NSString*)colorString;
 +(NSString*)formatNSColor:(NSMutableDictionary*)color;
 +(NSString*)formatUIColor:(NSMutableDictionary*)color;
++(NSString*)removeHash:(NSString*)input;
 -(NSString*)getSmallColorIdentifierWithRed:(int)red green:(int)green blue:(int)blue;
 -(NSString*)getBigColorIdentifierWithRed:(int)red green:(int)green blue:(int)blue;
 

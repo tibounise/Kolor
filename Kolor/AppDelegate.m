@@ -40,48 +40,28 @@ KolorParser *kparser;
 - (void)controlTextDidChange:(NSNotification *)notification {
     // Gathering the text as a NSString
     NSString *hexaText = [hexaInput stringValue];
-    int textLength = (int)[hexaText length];
     
-    // Length pre-check
-    if (textLength > 1) {
-        // If there is a "#", remove it
-        if ([[hexaText substringToIndex:1] isEqualToString:@"#"]) {
-            hexaText = [hexaText substringFromIndex:1];
-            textLength = textLength - 1;
-        }
+    hexaText = [KolorParser removeHash:hexaText];
     
-        // Second length pre-check
-        if (textLength == 3 || textLength == 6) {
-            // Checking for non-hex chars
-            if ([kparser isParsable:hexaText]) {
-                [hexaInputCell setNormal];
-                
-                NSMutableDictionary *color = [kparser parseColor:hexaText];
-                
-                nsString = [KolorParser formatNSColor:color];
-                uiString = [KolorParser formatUIColor:color];
-                
-                [nsField setStringValue:nsString];
-                [uiField setStringValue:uiString];
-                [colorWell setColor:[NSColor colorWithCalibratedRed:[[color valueForKey:@"red"] floatValue] green:[[color valueForKey:@"green"] floatValue] blue:[[color valueForKey:@"blue"] floatValue] alpha:1.0]];
-                [nsCopyButton setHidden:NO];
-                [uiCopyButton setHidden:NO];
-            }
-            else {
-                [self blackout];
-            }
-        }
-        else {
-            [self blackout];
-        }
+    if ([hexaText length]) {
+        [self light];
     }
-    else if ([hexaText length] == 1) {
-        [self blackout];
+    // Checking the length and if we can parse (if it's hex-friendly chars)
+    else if ([KolorParser checkLength:hexaText] && [kparser isParsable:hexaText]) {        [hexaInputCell setNormal];
+                
+        NSMutableDictionary *color = [kparser parseColor:hexaText];
+                
+        nsString = [KolorParser formatNSColor:color];
+        uiString = [KolorParser formatUIColor:color];
+                
+        [nsField setStringValue:nsString];
+        [uiField setStringValue:uiString];
+        [colorWell setColor:[NSColor colorWithCalibratedRed:[[color valueForKey:@"red"] floatValue] green:[[color valueForKey:@"green"] floatValue] blue:[[color valueForKey:@"blue"] floatValue] alpha:1.0]];
+        [nsCopyButton setHidden:NO];
+        [uiCopyButton setHidden:NO];
     }
     else {
-        [hexaInputCell setNormal];
-        [colorWell setColor:[NSColor darkGrayColor]];
-        [self semiblackout];
+        [self blackout];
     }
 }
 
@@ -110,6 +90,12 @@ KolorParser *kparser;
     [uiField setStringValue:@""];
     [nsCopyButton setHidden:YES];
     [uiCopyButton setHidden:YES];
+}
+
+-(void)light {
+    [hexaInputCell setNormal];
+    [colorWell setColor:[NSColor darkGrayColor]];
+    [self semiblackout];
 }
 
 @end
