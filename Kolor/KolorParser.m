@@ -51,6 +51,7 @@
     NSScanner *scanner = [NSScanner scannerWithString:colorString];
     int textLength = (int)[colorString length];
     unsigned int colorCode = 0,redByte,greenByte,blueByte;
+    float redFloat,greenFloat,blueFloat;
     [scanner scanHexInt:&colorCode];
     
     if (textLength == 3) {
@@ -60,21 +61,25 @@
         
         [output setValue:[self getSmallColorIdentifierWithRed:redByte green:greenByte blue:blueByte] forKey:@"identifier"];
         
-        [output setValue:[NSNumber numberWithFloat:redByte / 0xF] forKey:@"red"];
-        [output setValue:[NSNumber numberWithFloat:greenByte / 0xF] forKey:@"green"];
-        [output setValue:[NSNumber numberWithFloat:blueByte / 0xF] forKey:@"blue"];
+        redFloat = (float)redByte / 0xF;
+        greenFloat = (float)greenByte / 0xF;
+        blueFloat = (float)blueByte / 0xF;
     }
-    else if (textLength == 6) {
+    else {
         redByte		= (colorCode & 0xFF0000) >> 16;
         greenByte	= (colorCode & 0xFF00) >> 8;
         blueByte	= colorCode & 0xFF;
         
         [output setValue:[self getBigColorIdentifierWithRed:redByte green:greenByte blue:blueByte] forKey:@"identifier"];
         
-        [output setValue:[NSNumber numberWithFloat:redByte / 0xFF] forKey:@"red"];
-        [output setValue:[NSNumber numberWithFloat:greenByte / 0xFF] forKey:@"green"];
-        [output setValue:[NSNumber numberWithFloat:blueByte / 0xFF] forKey:@"blue"];
+        redFloat = (float)redByte / 0xFF;
+        greenFloat = (float)greenByte / 0xFF;
+        blueFloat = (float)blueByte / 0xFF;
     }
+    
+    [output setValue:[NSNumber numberWithFloat:redFloat] forKey:@"red"];
+    [output setValue:[NSNumber numberWithFloat:greenFloat] forKey:@"green"];
+    [output setValue:[NSNumber numberWithFloat:blueFloat] forKey:@"blue"];
     
     return output;
 }
