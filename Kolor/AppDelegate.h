@@ -23,7 +23,9 @@
 - (IBAction)nsCopyAction:(id)sender;
 - (IBAction)uiCopyAction:(id)sender;
 
+-(void)light;
 -(void)blackout;
 -(void)semiblackout;
+-(void)paste:(NSString*)string;
 
 @end
