@@ -41,23 +41,33 @@ KolorParser *kparser;
     // Gathering the text as a NSString
     NSString *hexaText = [hexaInput stringValue];
     
+    // Removing eventual "#" sign
     hexaText = [KolorParser removeHash:hexaText];
     
+    // Put grey background if hexaInput is empty
     if ([hexaText length] == 0) {
         [self light];
     }
+    
     // Checking the length and if we can parse (if it's hex-friendly chars)
     else if ([KolorParser checkLength:hexaText] && [kparser isParsable:hexaText]) {
+        // Put grey background
         [hexaInputCell setNormal];
                 
         [kparser parseColor:hexaText];
-                
+        
+        // Rendering the strings for NSColor & UIColor
         nsString = [kparser formatNSColor];
         uiString = [kparser formatUIColor];
-                
+
+        // Adding the strings in the NSTextFields
         [nsField setStringValue:nsString];
         [uiField setStringValue:uiString];
+        
+        // Setting the color in the box next to the hexaInput's color vier
         [colorWell setColor:[kparser formatDisplayColor]];
+        
+        // Enable "copy" buttons
         [nsCopyButton setHidden:NO];
         [uiCopyButton setHidden:NO];
     }

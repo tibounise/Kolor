@@ -18,6 +18,7 @@
 		DC20B72C1757A0E500508705 /* KolorTextInput.m in Sources */ = {isa = PBXBuildFile; fileRef = DC20B72B1757A0E500508705 /* KolorTextInput.m */; };
 		DCCEBA2F175D12950030B0F4 /* BigColorIdentifiers.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCCEBA2E175D12950030B0F4 /* BigColorIdentifiers.plist */; };
 		DCDA0AE0175B431F003FF466 /* KolorParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDA0ADF175B431F003FF466 /* KolorParser.m */; };
+		DCDECA97175FCEFA00E3032D /* Kolor.icns in Resources */ = {isa = PBXBuildFile; fileRef = DCDECA96175FCEFA00E3032D /* Kolor.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		DCCEBA2E175D12950030B0F4 /* BigColorIdentifiers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BigColorIdentifiers.plist; sourceTree = "<group>"; };
 		DCDA0ADE175B431F003FF466 /* KolorParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KolorParser.h; sourceTree = "<group>"; };
 		DCDA0ADF175B431F003FF466 /* KolorParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KolorParser.m; sourceTree = "<group>"; };
+		DCDECA96175FCEFA00E3032D /* Kolor.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Kolor.icns; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +61,8 @@
 		DC20B6F71757947A00508705 = {
 			isa = PBXGroup;
 			children = (
-				DC20B70C1757947A00508705 /* Kolor */,
 				DC20B7051757947A00508705 /* Frameworks */,
+				DC20B70C1757947A00508705 /* Kolor */,
 				DC20B7031757947A00508705 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,6 +97,7 @@
 		DC20B70C1757947A00508705 /* Kolor */ = {
 			isa = PBXGroup;
 			children = (
+				DCDECA96175FCEFA00E3032D /* Kolor.icns */,
 				DC20B7181757947A00508705 /* AppDelegate.h */,
 				DC20B7191757947A00508705 /* AppDelegate.m */,
 				DC20B71B1757947A00508705 /* MainMenu.xib */,
@@ -178,6 +181,7 @@
 				DC20B71D1757947A00508705 /* MainMenu.xib in Resources */,
 				DC0854C3175C801300A022A3 /* SmallColorIdentifiers.plist in Resources */,
 				DCCEBA2F175D12950030B0F4 /* BigColorIdentifiers.plist in Resources */,
+				DCDECA97175FCEFA00E3032D /* Kolor.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
