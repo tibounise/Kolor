@@ -43,20 +43,21 @@ KolorParser *kparser;
     
     hexaText = [KolorParser removeHash:hexaText];
     
-    if ([hexaText length]) {
+    if ([hexaText length] == 0) {
         [self light];
     }
     // Checking the length and if we can parse (if it's hex-friendly chars)
-    else if ([KolorParser checkLength:hexaText] && [kparser isParsable:hexaText]) {        [hexaInputCell setNormal];
+    else if ([KolorParser checkLength:hexaText] && [kparser isParsable:hexaText]) {
+        [hexaInputCell setNormal];
                 
-        NSMutableDictionary *color = [kparser parseColor:hexaText];
+        [kparser parseColor:hexaText];
                 
-        nsString = [KolorParser formatNSColor:color];
-        uiString = [KolorParser formatUIColor:color];
+        nsString = [kparser formatNSColor];
+        uiString = [kparser formatUIColor];
                 
         [nsField setStringValue:nsString];
         [uiField setStringValue:uiString];
-        [colorWell setColor:[NSColor colorWithCalibratedRed:[[color valueForKey:@"red"] floatValue] green:[[color valueForKey:@"green"] floatValue] blue:[[color valueForKey:@"blue"] floatValue] alpha:1.0]];
+        [colorWell setColor:[kparser formatDisplayColor]];
         [nsCopyButton setHidden:NO];
         [uiCopyButton setHidden:NO];
     }

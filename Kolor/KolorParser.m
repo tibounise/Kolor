@@ -8,6 +8,8 @@
 
 #import "KolorParser.h"
 
+#define DEBUG 1
+
 @implementation KolorParser
 
 -(id)init {
@@ -19,8 +21,12 @@
         
         smallColorIdentifiers = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SmallColorIdentifiers" ofType:@"plist"]];
         [smallColorIdentifiers retain];
+        
         bigColorIdentifiers = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BigColorIdentifiers" ofType:@"plist"]];
         [bigColorIdentifiers retain];
+        
+        color = [[NSMutableDictionary alloc] init];
+        [color retain];
     }
     
     return self;
@@ -31,13 +37,12 @@
         return [input substringFromIndex:1];
     }
     else {
-        return nil;
+        return input;
     }
 }
 
 +(BOOL)checkLength:(NSString*)input {
     int inputLength = (int)[input length];
-    NSLog(inputLength);
     return inputLength == 3 || inputLength == 6;
 }
 
@@ -46,8 +51,7 @@
     return badChars.location == NSNotFound;
 }
 
--(NSMutableDictionary*)parseColor:(NSString*)colorString {
-    NSMutableDictionary *output = [NSMutableDictionary dictionary];
+-(void)parseColor:(NSString*)colorString {
     NSScanner *scanner = [NSScanner scannerWithString:colorString];
     int textLength = (int)[colorString length];
     unsigned int colorCode = 0,redByte,greenByte,blueByte;
@@ -59,7 +63,7 @@
         greenByte	= (colorCode & 0xF0) >> 4;
         blueByte	= colorCode & 0xF;
         
-        [output setValue:[self getSmallColorIdentifierWithRed:redByte green:greenByte blue:blueByte] forKey:@"identifier"];
+        [color setValue:[self getSmallColorIdentifierWithRed:redByte green:greenByte blue:blueByte] forKey:@"identifier"];
         
         redFloat = (float)redByte / 0xF;
         greenFloat = (float)greenByte / 0xF;
@@ -70,33 +74,31 @@
         greenByte	= (colorCode & 0xFF00) >> 8;
         blueByte	= colorCode & 0xFF;
         
-        [output setValue:[self getBigColorIdentifierWithRed:redByte green:greenByte blue:blueByte] forKey:@"identifier"];
+        [color setValue:[self getBigColorIdentifierWithRed:redByte green:greenByte blue:blueByte] forKey:@"identifier"];
         
         redFloat = (float)redByte / 0xFF;
         greenFloat = (float)greenByte / 0xFF;
         blueFloat = (float)blueByte / 0xFF;
     }
     
-    [output setValue:[NSNumber numberWithFloat:redFloat] forKey:@"red"];
-    [output setValue:[NSNumber numberWithFloat:greenFloat] forKey:@"green"];
-    [output setValue:[NSNumber numberWithFloat:blueFloat] forKey:@"blue"];
-    
-    return output;
+    [color setValue:[NSNumber numberWithFloat:redFloat] forKey:@"red"];
+    [color setValue:[NSNumber numberWithFloat:greenFloat] forKey:@"green"];
+    [color setValue:[NSNumber numberWithFloat:blueFloat] forKey:@"blue"];
 }
 
-+(NSString*)formatNSColor:(NSMutableDictionary*)color {
+-(NSString*)formatNSColor {
     if ([color objectForKey:@"identifier"]) {
         return [NSString stringWithFormat:@"[NSColor %@]",[color valueForKey:@"identifier"]];
     }
     else {
-        return [NSString stringWithFormat:@"[NSColor colorWithRed:%.03f green:%.03f blue:%.03f alpha:1.0]",
+        return [NSString stringWithFormat:@"[NSColor colorWithCalibratedRed:%.03f green:%.03f blue:%.03f alpha:1.0]",
                                             [[color valueForKey:@"red"] floatValue],
                                             [[color valueForKey:@"green"] floatValue],
                                             [[color valueForKey:@"blue"] floatValue]];
     }
 }
 
-+(NSString*)formatUIColor:(NSMutableDictionary*)color {
+-(NSString*)formatUIColor {
     if ([color objectForKey:@"identifier"]) {
         return [NSString stringWithFormat:@"[UIColor %@]",[color valueForKey:@"identifier"]];
     }
@@ -108,31 +110,42 @@
     }
 }
 
+-(NSColor*)formatDisplayColor {
+    return [NSColor colorWithCalibratedRed:[[color valueForKey:@"red"] floatValue]
+                                     green:[[color valueForKey:@"green"] floatValue]
+                                      blue:[[color valueForKey:@"blue"] floatValue]
+                                     alpha:1.0f];
+}
+
 -(NSString*)getSmallColorIdentifierWithRed:(int)red green:(int)green blue:(int)blue {
     NSEnumerator *colorEnumerator = [smallColorIdentifiers objectEnumerator];
-    id color;
+    NSNumber *redQty = [NSNumber numberWithInt:red];
+    NSNumber *greenQty = [NSNumber numberWithInt:green];
+    NSNumber *blueQty = [NSNumber numberWithInt:blue];
+    id colorId;
     
-    while ((color = [colorEnumerator nextObject])) {
-        if ([[color valueForKey:@"red"] isEqualToNumber:[NSNumber numberWithInt:red]] && [[color valueForKey:@"blue"] isEqualToNumber:[NSNumber numberWithInt:blue]] && [[color valueForKey:@"green"] isEqualToNumber:[NSNumber numberWithInt:green]]) {
-            return [color valueForKey:@"name"];
+    while ((colorId = [colorEnumerator nextObject])) {
+        if ([[colorId valueForKey:@"red"] isEqualToNumber:redQty] && [[colorId valueForKey:@"blue"] isEqualToNumber:blueQty] && [[colorId valueForKey:@"green"] isEqualToNumber:greenQty]) {
+            return [colorId valueForKey:@"name"];
         }
     }
     
-    [colorEnumerator release];
     return nil;
 }
 
 -(NSString*)getBigColorIdentifierWithRed:(int)red green:(int)green blue:(int)blue {
     NSEnumerator *colorEnumerator = [bigColorIdentifiers objectEnumerator];
-    id color;
+    NSNumber *redQty = [NSNumber numberWithInt:red];
+    NSNumber *greenQty = [NSNumber numberWithInt:green];
+    NSNumber *blueQty = [NSNumber numberWithInt:blue];
+    id colorId;
     
-    while ((color = [colorEnumerator nextObject])) {
-        if ([[color valueForKey:@"red"] isEqualToNumber:[NSNumber numberWithInt:red]] && [[color valueForKey:@"blue"] isEqualToNumber:[NSNumber numberWithInt:blue]] && [[color valueForKey:@"green"] isEqualToNumber:[NSNumber numberWithInt:green]]) {
-            return [color valueForKey:@"name"];
+    while ((colorId = [colorEnumerator nextObject])) {
+        if ([[colorId valueForKey:@"red"] isEqualToNumber:redQty] && [[colorId valueForKey:@"blue"] isEqualToNumber:blueQty] && [[colorId valueForKey:@"green"] isEqualToNumber:greenQty]) {
+            return [colorId valueForKey:@"name"];
         }
     }
     
-    [colorEnumerator release];
     return nil;
 }
 
