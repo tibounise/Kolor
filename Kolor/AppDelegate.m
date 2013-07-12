@@ -13,7 +13,7 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
+@synthesize window;
 @synthesize hexaInput;
 @synthesize nsField;
 @synthesize uiField;
